@@ -10,3 +10,6 @@
 [submodule "ms-gateway"]
 	path = ms-gateway
 	url = https://github.com/Ninapepite/ms-gateway.git
+[submodule "ms-frontend"]
+	path = ms-frontend
+	url = https://github.com/Ninapepite/ms-frontend.git
