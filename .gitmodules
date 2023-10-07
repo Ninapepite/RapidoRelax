@@ -1,0 +1,12 @@
+[submodule "ms-gptLink"]
+	path = ms-gptLink
+	url = https://github.com/Ninapepite/ms-gptLink.git
+[submodule "ms-chat"]
+	path = ms-chat
+	url = https://github.com/Ninapepite/ms-chat.git
+[submodule "ms-cache"]
+	path = ms-cache
+	url = https://github.com/Ninapepite/ms-cache.git
+[submodule "ms-gateway"]
+	path = ms-gateway
+	url = https://github.com/Ninapepite/ms-gateway.git
