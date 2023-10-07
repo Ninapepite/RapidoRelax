@@ -1,0 +1,94 @@
+version: '3.7'
+
+services:
+  ms-gpt:
+    #Build in ms-authorization
+    build:
+      context: ./ms-gptLink
+      dockerfile: Dockerfile
+    container_name: ms-gptlink
+    restart: unless-stopped
+    ##environment from file
+    env_file:
+      - env/gptlink.env
+    ports:
+      - "4002:4000"
+    networks:
+      - backend
+      - frontend
+
+  ms-chat:
+    build:
+      context: ./ms-chat
+      dockerfile: Dockerfile
+    container_name: ms-chat
+    restart: unless-stopped
+    env_file:
+      - env/chat.env
+    ports:
+      - "4001:4000"
+    networks:
+      - backend
+      - frontend
+
+  ms-cache:
+    build:
+      context: ./ms-cache
+      dockerfile: Dockerfile
+    container_name: ms-cache
+    restart: unless-stopped
+    env_file:
+      - env/cache.env
+    ports:
+      - "4003:4000"
+    networks:
+      - backend
+      - frontend
+
+  ms-gateway:
+    build:
+      context: ./ms-gateway
+      dockerfile: Dockerfile
+    container_name: ms-gateway
+    restart: unless-stopped
+    env_file:
+      - env/gateway.env
+    ports:
+      - "4000:4000"
+    networks:
+      - backend
+      - frontend
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    env_file:
+      - env/mongodb.env
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+    networks:
+      - backend
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    networks:
+      - backend
+      - frontend
+##create backend network for the two services
+networks:
+  backend:
+    name: backend
+  ##create frontend network for app services
+  frontend:
+    name: frontend
