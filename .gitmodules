@@ -13,3 +13,6 @@
 [submodule "ms-frontend"]
 	path = ms-frontend
 	url = https://github.com/Ninapepite/ms-frontend.git
+[submodule "ms-frontend-react"]
+	path = ms-frontend-react
+	url = https://github.com/Ninapepite/ms-frontend-react.git
