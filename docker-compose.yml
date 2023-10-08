@@ -61,7 +61,7 @@ services:
 
   ms-frontend:
     build:
-      context: ./ms-frontend
+      context: ./ms-frontend-react
       dockerfile: Dockerfile
     container_name: ms-frontend
     restart: unless-stopped
